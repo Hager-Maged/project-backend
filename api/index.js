@@ -4,15 +4,16 @@ const app = express();
 app.use(express.json());
 require("dotenv").config();
 
-const port = process.env.port || 7000;
+const port = process.env.port || 6000;   // note : fe el .env el port=6000 
 const URL = process.env.DB_URL;
 
 const auth_routing = require("../route/auth");
+const  profile_router  = require("../route/profile-routes");
 
 mongoose
   .connect(URL)
   .then(() => {
-    console.log("testing");
+    console.log("Mongo is connected");
   })
   .catch((err) => console.log(err));
 
@@ -21,6 +22,7 @@ app.get("/api/v1", (req, res) => {
 });
 
 app.use("/api/v1/auth", auth_routing);
+app.use("/api/v1/profile", profile_router );
 
 app.use((req, res) =>
   res.status(404).json({ message: "Route not found", data: null })
