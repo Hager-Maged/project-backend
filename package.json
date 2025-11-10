@@ -9,12 +9,24 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.1.10"
-  },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "jwt-encode": "^1.0.1",
     "mongoose": "^8.19.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hager-Maged/project-backend.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Hager-Maged/project-backend/issues"
+  },
+  "homepage": "https://github.com/Hager-Maged/project-backend#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
