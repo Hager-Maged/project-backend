@@ -7,9 +7,9 @@ require("dotenv").config();
 
 const port = process.env.port || 6000;   // note : fe el .env el port=6000 
 const URL = process.env.DB_URL;
-
 const auth_routing = require("../route/auth");
-const  profile_router  = require("../route/profile-routes");
+const profile_router = require("../route/profile-routes");
+const home_routes = require("../route/home-routes");
 
 mongoose
   .connect(URL)
@@ -23,7 +23,8 @@ app.get("/api/v1", (req, res) => {
 });
 
 app.use("/api/v1/auth", auth_routing);
-app.use("/api/v1/profile", profile_router );
+app.use("/api/v1/profile", profile_router);
+app.use("/api/v1/home", home_routes);
 
 app.use((req, res) =>
   res.status(404).json({ message: "Route not found", data: null })

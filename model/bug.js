@@ -10,7 +10,7 @@ const reply = new mongoose.Schema({
 
 const bug_model = new mongoose.Schema(
   {
-    categoryName: { type: String, required: true },
+    categoryName: { type: String, required: true, enum: ["Front-End" , "Back-End" , "Others"] },
     title: { type: String, required: true },
     caption: { type: String },
     description: { type: String },
@@ -18,11 +18,11 @@ const bug_model = new mongoose.Schema(
     replies: { type: Number, default: 0 },
     replyDetails: [reply],
     views: { type: Number, default: 0 },
-    date: { type: Date, default: Date.now },
-    state: { type: String, default: "unsolved" },
+    state: { type: String, default: "unsolved" , enum:["unsolved" , "solved"] },
     tags: [{ type: String }],
     author: { type: String, required: true },
     sort: { type: String, default: "recent" },
+    snippit : {type : String},
   },
   { timestamps: true }
 );
