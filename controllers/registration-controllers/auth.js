@@ -3,6 +3,14 @@ const bcrypt = require("bcrypt");
 const jwt = require("jwt-encode");
 
 const signin = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://bugopedia.vercel.app"); 
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
@@ -18,16 +26,23 @@ const signin = async (req, res) => {
     res.status(200).json({ 
       message: "Signin successful", 
       data: { token, id: user._id },
-     });
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
 };
 
 const signup = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://bugopedia.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   try {
     const { username, email, password } = req.body;
-
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
@@ -43,11 +58,11 @@ const signup = async (req, res) => {
       data: { username, email },
     });
   } catch (error) {
-      return res.status(400).json({
-        message: "Invalid data",
-        details: error.errors,
-        data: null,
-      });
+    return res.status(400).json({
+      message: "Invalid data",
+      details: error.errors,
+      data: null,
+    });
   }
 };
 
