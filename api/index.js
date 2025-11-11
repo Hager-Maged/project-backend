@@ -5,13 +5,6 @@ app.use(express.json());
 require("dotenv").config();
 
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://bugopedia.vercel.app"); 
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
-
 const port = process.env.port || 6000;   // note : fe el .env el port=6000 
 const URL = process.env.DB_URL;
 
