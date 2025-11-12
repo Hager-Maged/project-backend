@@ -6,8 +6,7 @@ app.use(cors());
 app.use(express.json());
 require("dotenv").config();
 
-
-const port = process.env.port || 6000;   // note : fe el .env el port=6000 
+const port = process.env.PORT || 6000; // note : fe el .env el port=6000
 const URL = process.env.DB_URL;
 const auth_routing = require("../route/auth");
 const profile_router = require("../route/profile-routes");
