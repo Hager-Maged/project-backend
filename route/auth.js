@@ -15,7 +15,7 @@ const {
 const { validateSign } = require("../middleware/validationLogin");
 
 router.post("/signin", validateSign, signin);
-router.post("/signup", validateSignup, checkEmail, checkUsername, signup);
+router.post("/signup", validateSignup,checkUsername, checkEmail, signup);
 
 
 module.exports = router;
