@@ -40,6 +40,7 @@ const checkEmail = async (req, res, next) => {
     }
     next();
   } catch (error) {
+    console.error("Middleware error:", error);
     return res.status(500).json({ message: "Server error", data: null });
   }
 };
@@ -56,6 +57,7 @@ const checkUsername = async (req, res, next) => {
     }
     next();
   } catch (error) {
+    console.error("Middleware error:", error);
     return res.status(500).json({ message: "Server error", data: null });
   }
 };
