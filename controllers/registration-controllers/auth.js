@@ -1,6 +1,6 @@
 const User = require("../../model/user");
 const bcrypt = require("bcrypt");
-const jwt = require("jwt-encode");
+const jwt = require("jsonwebtoken");
 
 const signin = async (req, res) => {
   const { email, password } = req.body;
@@ -12,13 +12,15 @@ const signin = async (req, res) => {
     if (!isMatch)
       return res.status(401).json({ message: "Incorrect password" });
 
-    const secret_key = process.env.SECRET_KEY;
-    const token = jwt({ user }, secret_key);
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      process.env.SECRET_KEY
+    );
 
-    res.status(200).json({ 
-      message: "Signin successful", 
+    res.status(200).json({
+      message: "Signin successful",
       data: { token, id: user._id },
-     });
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
@@ -43,11 +45,11 @@ const signup = async (req, res) => {
       data: { username, email },
     });
   } catch (error) {
-      return res.status(400).json({
-        message: "Invalid data",
-        details: error.errors,
-        data: null,
-      });
+    return res.status(400).json({
+      message: "Invalid data",
+      details: error.errors,
+      data: null,
+    });
   }
 };
 
