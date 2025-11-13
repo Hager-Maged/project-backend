@@ -16,7 +16,7 @@ app.use(
 );
 
 
-const port = process.env.PORT || 6000; // note : fe el .env el port=6000
+const port = process.env.PORT || 5000; // note : fe el .env el port=6000
 const URL = process.env.DB_URL;
 const auth_routing = require("../route/auth");
 const profile_router = require("../route/profile-routes");
