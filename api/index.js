@@ -16,10 +16,10 @@ app.use(
 );
 
 
-const port = process.env.PORT || 5000; // note : fe el .env el port=6000
+const port = process.env.port || 5000;
 const URL = process.env.DB_URL;
 const auth_routing = require("../route/auth");
-const profile_router = require("../route/profile-routes");
+const profile_routes = require("../route/profile-routes");
 const home_routes = require("../route/home-routes");
 const tech_routes = require("../route/tech-routes")
 mongoose
@@ -34,7 +34,7 @@ app.get("/api/v1", (req, res) => {
 });
 
 app.use("/api/v1/auth", auth_routing);
-app.use("/api/v1/profile", profile_router);
+app.use("/api/v1/profile", profile_routes);
 app.use("/api/v1/home", home_routes);
 app.use("/api/v1/tech",tech_routes)
 app.use("/api/v1/tech",tech_routes)
