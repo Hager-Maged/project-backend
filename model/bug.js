@@ -17,7 +17,7 @@ const bug_model = new mongoose.Schema(
     },
     title: { type: String, required: true },
     caption: { type: String },
-    description: { type: String },
+    description: { type: String, required: true },
     votes: { type: Number, default: 0 },
     replies: { type: Number, default: 0 },
     replyDetails: [reply],
@@ -34,4 +34,4 @@ const bug_model = new mongoose.Schema(
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("Bug", bug_model);
+module.exports = mongoose.model("bugs", bug_model);

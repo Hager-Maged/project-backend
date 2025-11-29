@@ -37,7 +37,6 @@ app.use("/api/v1/auth", auth_routing);
 app.use("/api/v1/profile", profile_routes);
 app.use("/api/v1/home", home_routes);
 app.use("/api/v1/tech",tech_routes)
-app.use("/api/v1/tech",tech_routes)
 app.use((req, res) =>
   res.status(404).json({ message: "Route not found", data: null })
 );
