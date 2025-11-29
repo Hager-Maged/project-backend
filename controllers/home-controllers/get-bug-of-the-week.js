@@ -8,7 +8,7 @@ const getBugOfTheWeek = async (req, res) => {
       return res.status(404).json({ message: "No bugs found" });
     }
 
-    const bugOfTheWeek = bugs.sort((a, b) => b.likes - a.likes)[0];
+    const bugOfTheWeek = bugs.sort((a, b) => b.likesCount - a.likesCount)[0];
 
     res.status(200).json({
       message: "Bug of the week",

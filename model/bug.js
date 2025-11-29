@@ -23,6 +23,7 @@ const bug_model = new mongoose.Schema(
     replyDetails: [reply],
     views: { type: Number, default: 0 },
     state: { type: String, default: "unsolved", enum: ["unsolved", "solved"] },
+    status: { type: String, default: "open" },
     tags: [{ type: String }],
     userId: {
       type: mongoose.Schema.Types.ObjectId,
