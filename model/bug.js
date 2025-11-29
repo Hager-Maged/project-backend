@@ -26,7 +26,6 @@ const bug_model = new mongoose.Schema(
     status: { type: String, default: "open" },
     tags: [{ type: String }],
     author: { type: String, required: true },
-    likes: { type: Number, default: 0 },
     sort: { type: String, default: "recent" },
     snippit: { type: String },
   },

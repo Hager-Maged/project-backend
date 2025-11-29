@@ -11,10 +11,10 @@ const getTrendingCategories = async (req, res) => {
     const categoryCount = {};
     bugs.forEach((bug) => {
       const category = bug.categoryName;
-      if (categoryCount[bug.category]) {
-        categoryCount[bug.category]++;
+      if (categoryCount[category]) {
+        categoryCount[category]++;
       } else {
-        categoryCount[bug.category] = 1;
+        categoryCount[category] = 1;
       }
     });
 
