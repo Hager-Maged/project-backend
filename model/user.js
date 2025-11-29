@@ -16,6 +16,9 @@ const user_model = new mongoose.Schema(
     skills: { type: [String], default: [] },
     theme: { type: String, default: "light" },
     points: { type: Number, default: 0 },
+    badgesEarned: { type: Number, default: 0 },
+    bugsSubmitted: { type: Number, default: 0 },
+    commentsMade: { type: Number, default: 0 },
     role: { type: String, default: "user", required: true },
   },
   { timestamps: true }
