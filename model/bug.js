@@ -25,6 +25,11 @@ const bug_model = new mongoose.Schema(
     state: { type: String, default: "unsolved", enum: ["unsolved", "solved"] },
     status: { type: String, default: "open" },
     tags: [{ type: String }],
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Users",
+      required: true,
+    },
     author: { type: String, required: true },
     sort: { type: String, default: "recent" },
     snippit: { type: String },
