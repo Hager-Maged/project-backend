@@ -15,7 +15,7 @@ app.use(
   })
 );
 
-const port = process.env.port || 5000;
+const port = process.env.port || 4000;
 const URL = process.env.DB_URL;
 const auth_routing = require("../route/auth");
 const profile_routes = require("../route/profile-routes");
