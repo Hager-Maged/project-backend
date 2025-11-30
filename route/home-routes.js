@@ -7,11 +7,13 @@ const getBugOfTheWeek = require("../controllers/home-controllers/get-bug-of-the-
 const { default: mongoose } = require("mongoose");
 const {add_bug} = require("../controllers/home-controllers/add-bug");
 const get_one_bug = require("../controllers/home-controllers/get-one-bug");
+const get_all_bugs = require("../controllers/home-controllers/get-all-bugs");
+
 
 router.get("/get-trending-categories", getTrendingCategories);
 router.get("/get-top-contributors", getTopContributors);
 router.get("/get-bug-of-the-week", getBugOfTheWeek);
-
+router.get("/get-all-bugs" , get_all_bugs)
 
 router.post("/add_bug" , add_bug);
 router.get("/get_bug/:_id" , get_one_bug)

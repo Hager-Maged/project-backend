@@ -5,16 +5,9 @@ const add_bug = async (req, res) => {
     const {
       categoryName,
       title,
-      caption,
       description,
-      votes,
-      replies,
-      replyDetails,
-      views,
-      state,
       tags,
       author,
-      sort,
       snippit,
     } = req.body;
     const newBug = new bug({
