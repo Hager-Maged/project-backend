@@ -14,7 +14,7 @@ const add_bug = async (req, res) => {
       });
     }
 
-    const author = userDoc.name;
+    const author = userDoc.username;
 
     const newBug = new bug({
       categoryName,
