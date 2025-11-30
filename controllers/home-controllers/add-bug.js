@@ -1,9 +1,21 @@
+const mongoose = require("mongoose");
 const bug = require("../../model/bug");
+const user = require("../../model/user");
 
 const add_bug = async (req, res) => {
   try {
-    const { categoryName, title, description, tags, author, snippit, userId } =
-      req.body;
+    const { categoryName, title, description, tags, snippit, userId } = req.body;
+
+    const userDoc = await user.findById(userId);
+    if (!userDoc) {
+      return res.status(404).json({
+        status: 404,
+        message: "User not found",
+      });
+    }
+
+    const author = userDoc.name;
+
     const newBug = new bug({
       categoryName,
       title,
@@ -13,20 +25,19 @@ const add_bug = async (req, res) => {
       author,
       userId,
     });
+
     await newBug.save();
 
-    const data = {
+    res.status(201).json({
       status: 201,
       message: "Bug Added Successfully",
       bug: newBug,
-    };
-    res.status(201).json(data);
+    });
   } catch (err) {
-    const message = {
+    res.status(500).json({
       status: 500,
       error: err.message,
-    };
-    res.status(500).json(message);
+    });
   }
 };
 
