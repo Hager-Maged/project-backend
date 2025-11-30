@@ -10,20 +10,30 @@ const reply = new mongoose.Schema({
 
 const bug_model = new mongoose.Schema(
   {
-    categoryName: { type: String, required: true, enum: ["Front-End" , "Back-End" , "Others"] },
+    categoryName: {
+      type: String,
+      required: true,
+      enum: ["Front-End", "Back-End", "Others"],
+    },
     title: { type: String, required: true },
     caption: { type: String },
-    description: { type: String },
+    description: { type: String, required: true },
     votes: { type: Number, default: 0 },
     replies: { type: Number, default: 0 },
     replyDetails: [reply],
     views: { type: Number, default: 0 },
-    state: { type: String, default: "unsolved" , enum:["unsolved" , "solved"] },
+    state: { type: String, default: "unsolved", enum: ["unsolved", "solved"] },
+    status: { type: String, default: "open" },
     tags: [{ type: String }],
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Users",
+      required: true,
+    },
     author: { type: String, required: true },
     sort: { type: String, default: "recent" },
-    snippit : {type : String},
+    snippit: { type: String },
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("Bug", bug_model);
+module.exports = mongoose.model("bugs", bug_model);

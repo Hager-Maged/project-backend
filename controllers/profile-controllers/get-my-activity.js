@@ -1,10 +1,10 @@
-const user = require("../../model/user");
+const User = require("../../model/user");
 const bug = require("../../model/bug");
 
 const getMyActivity = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await user.findById(id);
+    const user = await User.findById(id);
 
     const allBugs = await bug.find({});
 
