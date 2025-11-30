@@ -30,7 +30,7 @@ const bug_model = new mongoose.Schema(
       ref: "Users",
       required: true,
     },
-    author: { type: String, required: true },
+    author: { type: String },
     sort: { type: String, default: "recent" },
     snippit: { type: String },
   },
