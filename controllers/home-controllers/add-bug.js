@@ -2,14 +2,8 @@ const bug = require("../../model/bug");
 
 const add_bug = async (req, res) => {
   try {
-    const {
-      categoryName,
-      title,
-      description,
-      tags,
-      author,
-      snippit,
-    } = req.body;
+    const { categoryName, title, description, tags, author, snippit, userId } =
+      req.body;
     const newBug = new bug({
       categoryName,
       title,
@@ -17,20 +11,21 @@ const add_bug = async (req, res) => {
       snippit,
       tags,
       author,
+      userId,
     });
     await newBug.save();
 
     const data = {
-        status : 201,
-        message : "Bug Added Successfully",
-        bug : newBug,
-    }
+      status: 201,
+      message: "Bug Added Successfully",
+      bug: newBug,
+    };
     res.status(201).json(data);
   } catch (err) {
     const message = {
-        status : 500, 
-        error : err.message,
-    }
+      status: 500,
+      error: err.message,
+    };
     res.status(500).json(message);
   }
 };
